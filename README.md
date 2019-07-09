@@ -31,3 +31,17 @@ SVN에서 GIT으로 전환하기
  ### 3.1 SVN clean ###
   - java -Dfile.encoding=utf-8 -jar ../svn-migration-scripts.jar clean-git --force
   
+# 4. git commit #
+  
+ ### 4.1 이전할 git 저장소에 커밋(push) 하기 (git 서버 저장소가 git.example.com/project)인 경우 ###
+  - git remote add origin http://{username}@git.example.com/project
+  - git push origin master
+  - git 저장소의 사용자 이름이 {username}일 경우이며 비밀번호를 물어보는데 맞으면 커밋이 완료됩니다. 
+  - 이제 git 서버 저장소에서 project 안에 기본 브랜치인 master에 소스가 커밋된 것을 확인할 수 있을 것입니다.
+
+
+ ### 4.2 <tip.1>master에 이미 내용이 있어서 덮어 씌우기 위해서는 다음 명령을 실행합니다. ###
+  - git push origin +master
+
+ ### 4.3 <tip.2>master가 아닌 다른 브랜치에 커밋하기 위해서는 다음 명령을 실행합니다. ({branchname}은 서버에 생성 할 새로운 브랜치 이름입니다.) ###
+  - git push origin master:{branchname}
